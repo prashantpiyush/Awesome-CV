@@ -161,7 +161,7 @@
 %                Configuration for fonts
 %-------------------------------------------------------------------------------
 % Set the FontAwesome font to be up-to-date.
-\newfontfamily\FA[Path=\@fontdir]{FontAwesome}
+% \newfontfamily\FA[Path=\@fontdir]{FontAwesome}
 % Set font for header (default is Roboto)
 \newfontfamily\headerfont[
   Path=\@fontdir,
@@ -395,8 +395,8 @@
 \newcommand{\acvHeaderAfterQuoteSkip}{5mm}
 
 % Others
-\newcommand{\acvSectionTopSkip}{3mm}
-\newcommand{\acvSectionContentTopSkip}{2.5mm}
+\newcommand{\acvSectionTopSkip}{1.0mm} %3mm
+\newcommand{\acvSectionContentTopSkip}{1.3mm} %2.5mm
 
 
 %-------------------------------------------------------------------------------
@@ -607,6 +607,30 @@
     \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
   \end{tabular*}%
 }
+% Define an entry of cv information without description
+% Usage: \cventry{<position>}{<title>}{<location>}{<date>}
+\newcommand*{\cventrynodesc}[4]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+    \ifempty{#2#3}
+      {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+      {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
+      \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+  \end{tabular*}%
+}
+
+% Define an entry of cv information with only title
+% Usage: \cventry{<title>}
+\newcommand*{\cventryonlytitle}[1]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+    \entrytitlestyle{#1}
+  \end{tabular*}%
+}
 
 % Define an environment for cvsubentry
 \newenvironment{cvsubentries}{%
@@ -655,9 +679,12 @@
   \vspace{\acvSectionContentTopSkip}
   \vspace{-2.0mm}
   \begin{center}
-    \setlength\tabcolsep{1ex}
-    \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r L{\textwidth * \real{0.9}}}
+    \setlength\tabcolsep{1ex} %1ex
+    % \setlength{\extrarowheight}{0pt}
+    \renewcommand{\arraystretch}{0.5}
+    % \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l L{\textwidth * \real{0.8}}}
+    \begin{tabular*}{\textwidth}
+      {@{\extracolsep{\fill}} p{\textwidth * \real{0.2}} p{\textwidth * \real{0.8}}}
 }{%
     \end{tabular*}
   \end{center}
