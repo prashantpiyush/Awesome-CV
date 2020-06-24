@@ -188,8 +188,9 @@
 %-------------------------------------------------------------------------------
 % Configure styles for each CV elements
 % For fundamental structures
-\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{graytext} #1}}
-\newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{text} #1}}
+% header name style original font size = 32
+\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{26pt}{1em}\headerfontlight\color{graytext} #1}}
+\newcommand*{\headerlastnamestyle}[1]{{\fontsize{26pt}{1em}\headerfont\bfseries\color{text} #1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\scshape\color{awesome} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\headerfont\itshape\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfont\color{text} #1}}
@@ -201,10 +202,10 @@
 
 % For elements of entry
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\entrypositionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\slshape\color{graytext} #1}}
+\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\slshape\color{awesome} #1}}
+\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\upshape\color{text} #1}}
 
 % For elements of subentry
 \newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
@@ -221,7 +222,7 @@
 
 % For elements of skill
 \newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
+\newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{text} #1}}
 
 % For elements of the cover letter
 \newcommand*{\lettersectionstyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
@@ -395,7 +396,7 @@
 \newcommand{\acvHeaderAfterQuoteSkip}{5mm}
 
 % Others
-\newcommand{\acvSectionTopSkip}{1.0mm} %3mm
+\newcommand{\acvSectionTopSkip}{0.8mm} %3mm
 \newcommand{\acvSectionContentTopSkip}{1.3mm} %2.5mm
 
 
@@ -599,6 +600,7 @@
   \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
+  % \renewcommand{\arraystretch}{1.0}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
     \ifempty{#2#3}
       {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
@@ -613,6 +615,7 @@
   \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
+  \setlength{\parskip}{0.8em}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
     \ifempty{#2#3}
       {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
@@ -627,7 +630,9 @@
   \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+  \renewcommand{\arraystretch}{0.5}
+  \setlength{\parskip}{0.5em}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l}
     \entrytitlestyle{#1}
   \end{tabular*}%
 }
@@ -675,20 +680,37 @@
 }
 
 % Define an environment for cvskill
+% \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l L{\textwidth * \real{0.8}}}
 \newenvironment{cvskills}{%
   \vspace{\acvSectionContentTopSkip}
   \vspace{-2.0mm}
   \begin{center}
     \setlength\tabcolsep{1ex} %1ex
-    % \setlength{\extrarowheight}{0pt}
-    \renewcommand{\arraystretch}{0.5}
-    % \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l L{\textwidth * \real{0.8}}}
+    \setlength{\extrarowheight}{0pt}
+    \renewcommand{\arraystretch}{0.5} % row space
+    \setlength{\parskip}{0.5em}
     \begin{tabular*}{\textwidth}
-      {@{\extracolsep{\fill}} p{\textwidth * \real{0.2}} p{\textwidth * \real{0.8}}}
+      {@{\extracolsep{\fill}} p{\textwidth*\real{0.2}} p{\textwidth*\real{0.8}}}
 }{%
     \end{tabular*}
   \end{center}
 }
+
+\newenvironment{cfskillswithcolstreched}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-2.0mm}
+  \begin{center}
+    \setlength\tabcolsep{1ex} %1ex
+    \setlength{\extrarowheight}{0pt}
+    \renewcommand{\arraystretch}{1.0}
+    \setlength{\parskip}{0.8em}
+    \begin{tabular*}{\textwidth}
+      {@{\extracolsep{\fill}} L{\textwidth*\real{0.4}} b{\textwidth*\real{0.6}}}
+}{%
+    \end{tabular*}
+  \end{center}
+}
+
 % Define a line of cv information(skill)
 % Usage: \cvskill{<type>}{<skillset>}
 \newcommand*{\cvskill}[2]{%
@@ -700,7 +722,7 @@
   \vspace{-4.0mm}
   \begin{justify}
   \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
-    \setlength{\parskip}{0pt}
+    \setlength{\parskip}{1pt} %0pt
     \renewcommand{\labelitemi}{\bullet}
 }{%
   \end{itemize}
