@@ -690,7 +690,7 @@
     \renewcommand{\arraystretch}{0.5} % row space
     \setlength{\parskip}{0.5em}
     \begin{tabular*}{\textwidth}
-      {@{\extracolsep{\fill}} p{\textwidth*\real{0.2}} p{\textwidth*\real{0.8}}}
+      {@{\extracolsep{\fill}} p{\textwidth*\real{0.1}} p{\textwidth*\real{0.9}}}
 }{%
     \end{tabular*}
   \end{center}
