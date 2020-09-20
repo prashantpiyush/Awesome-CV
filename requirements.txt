@@ -1,0 +1,2 @@
+texinfo texlive-bibtex-extra texlive-font-utils texlive-fonts-extra texlive-fonts-extra-doc texlive-fonts-extra-links texlive-fonts-recommended-doc texlive-formats-extra texlive-lang-english texlive-latex-base-doc texlive-latex-extra-doc texlive-latex-recommended-doc texlive-luatex texlive-metapost texlive-metapost-doc texlive-pstricks texlive-pstricks-doc texlive-publishers texlive-publishers-doc texlive-science texlive-science-doc texlive-xetex
+
