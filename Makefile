@@ -11,7 +11,7 @@ resume.pdf: $(RESUME_DIR)/resume.tex $(RESUME_SRCS)
 	$(CC) -output-directory=$(RESUME_DIR) $<
 
 copy:
-	cp $(RESUME_DIR)/resume.pdf Prashant_Piyush_Resume.pdf
+	cp $(RESUME_DIR)/resume.pdf Abhinav_Sharma_Resume.pdf
 
 clean:
 	rm -r $(RESUME_DIR)/*.aux

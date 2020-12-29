@@ -624,6 +624,19 @@
   \end{tabular*}%
 }
 
+% Define an entry of cv information without description
+% Usage: \cventry{<title>}{<date>}
+\newcommand*{\cventrynotitle}[3]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \setlength{\parskip}{0.8em}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+      \entrytitlestyle{#1} & \entrydatestyle{#2} \\
+      \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#3}}
+  \end{tabular*}%
+}
+
 % Define an entry of cv information with only title
 % Usage: \cventry{<title>}
 \newcommand*{\cventryonlytitle}[1]{%
@@ -723,6 +736,17 @@
   \begin{justify}
   \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
     \setlength{\parskip}{1pt} %0pt
+    \renewcommand{\labelitemi}{\bullet}
+}{%
+  \end{itemize}
+  \end{justify}
+  \vspace{-4.0mm}
+}
+
+\newenvironment{cvdesc}{%
+  \vspace{-4.0mm}
+  \begin{justify}
+  \begin{itemize}[leftmargin=0ex, nosep, noitemsep]
     \renewcommand{\labelitemi}{\bullet}
 }{%
   \end{itemize}
